@@ -1,3 +1,3 @@
 ﻿  MonteCarloPi.cpp
-C:\Users\Administrator\source\repos\MonteCarloPi\MonteCarloPi\MonteCarloPi.cpp(13): warning C4101: 'tropf': unreferenced local variable
-  MonteCarloPi.vcxproj -> C:\Users\Administrator\source\repos\MonteCarloPi\Debug\MonteCarloPi.exe
+i:\2. inf2p\montecarlopi\montecarlopi\montecarlopi.cpp(99): error C2360: Initialisierung von "imKreis" durch "case"-Bezeichnung übersprungen
+  i:\2. inf2p\montecarlopi\montecarlopi\montecarlopi.cpp(50): note: Siehe Deklaration von "imKreis"

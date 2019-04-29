@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <iostream>
 #include <cmath>
 #define _USE_MATH_DEFINES
@@ -40,5 +41,6 @@ int main(int argc, char const *argv[])
     }
     cout << endl
          << "e: " << fixed << setprecision(10) << e << endl;
+	system("pause");
     return 0;
 }

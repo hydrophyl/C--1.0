@@ -1,12 +1,15 @@
-// MonteCarloPi.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// MonteCarloPi.cpp : Definiert den Einstiegspunkt f�r die Konsolenanwendung.
 //
-#define _USE_MATH_DEFINE
+
+
+#include "stdafx.h"
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <cmath>
 #include <iomanip>
 using namespace std;
 
-double Koordinate(double radius) {
+double Koordinate(double radius){
 	double zufallszahl;
 	zufallszahl = double(rand()) / double(RAND_MAX) * radius;
 	return zufallszahl;
@@ -14,35 +17,127 @@ double Koordinate(double radius) {
 
 int main()
 {
-	double r;
-	int tropf;
 	srand(unsigned int(time(0)));
-    cout << "Hello World!\n"; 
-	cout << "Radius des Kreises: ";
-	cin >> r;
-	if (r < 0) {
-		cout << "FALSCHE Radius!"; 
-		cout << "Radius: "; cin >> r;
-	}
-	cout << "radius: " << r << endl;
-	cout << "Anzahl der Regentropfen: ";
-	cin >> tropf;
-	if (tropf < 0) {
-		cout << "FALSCHE Anzahl der Tropfchen" << endl
-			<< "Anzahl der Tropfen: ";
-		cin >> tropf;
+	//einmalig oder mehrmals wählen
+	int howmuch;
+	cout << "Wie oft? Einmalig Ausfuehrung [1], bestimmte Anzahl [n] eingeben: ";
+	cin >> howmuch;
+	
+	switch (howmuch)
+	{
+	// n Mals als default
+	default:
+		cout << "Programm wird " << howmuch << " mals durchlaufen !" << endl;
+		//Radius
+		double r;
+		float anzahl;
+		float pi;
+		cout << "Radius: ";
+		cin >> r;
+		if (r < 0) {
+			cout << "Radius muss groesser als 0!" << endl << "Radius: ";
+			cin >> r;
+		}
+		//Erste Mal laufen
+		cout << "Anzahl der Regentropfen: ";
+		cin >> anzahl;
+		if (anzahl < 0) {
+			cout << "Anzahl der Regentropfen muss groesser als 0!" << endl << "Anzahl der Regentropfen: ";
+			cin >> anzahl;
+		}
+		//Für jeden Punkt zufällige x, y Werte
+		double x, y;
+		float imKreis = 0;
+		for (int i = 1; i <= anzahl; i++)
+		{
+			x = Koordinate(r);
+			y = Koordinate(r);
+			if (x*x + y*y <= r*r) {
+				imKreis++;
+			}
+		}
+		float pineu;
+		pineu = 4 * (imKreis / anzahl);
+		pi = pineu;
+		//Naeherungswert pi definieren = Mittelwert aller PiNeus
+		for (int i = 1; i < howmuch; i++)
+		{
+			//Anfang des ersten Teils
+			cout << "Anzahl der Regentropfen: ";
+			cin >> anzahl;
+			if (anzahl < 0) {
+				cout << "Anzahl der Regentropfen muss groesser als 0!" << endl << "Anzahl der Regentropfen: ";
+				cin >> anzahl;
+			}
+			//Für jeden Punkt zufällige x, y Werte
+			imKreis = 0;
+			for (int i = 1; i <= anzahl; i++)
+			{
+				x = Koordinate(r);
+				y = Koordinate(r);
+				if (x*x + y*y <= r*r) {
+					imKreis++;
+				}
+			}
+			// Nachrechnungen
+			float pineu;
+			pineu = 4 * (imKreis / anzahl);
+			pi = (pi + pineu) / 2;
+			//Ende des ersten Teils 
+			// Zum Testen
+			cout << "Anzahl der erzeugten Tropfen: " << anzahl << endl
+				<< "Anzahl der Tropfen im Kreis: " << imKreis << endl
+				<< "Pi: " << pi << endl;
+		}
+		
+		//Ausgabe
+		cout << "Wahrer Wert von PI: " << M_PI << endl
+			<< "Unterschied \"PI - Naherungswert\": " << M_PI / pi << endl
+			<< "Prozentualer Fehler: " << (1.0 - pi / M_PI)*100.0 << " %" << endl;
+		break;
+
+	// 1 Mal
+	case 1:
+		cout << "Programm wird nur 1 mal durchfuehren! " << endl;
+		//Anfang des ersten Teils
+		cout << "Radius: ";
+		cin >> r;
+		if (r < 0) {
+			cout << "Radius muss groesser als 0!" << endl << "Radius: ";
+			cin >> r;
+		}
+		cout << "Anzahl der Regentropfen: ";
+		cin >> anzahl;
+		if (anzahl < 0) {
+			cout << "Anzahl der Regentropfen muss groesser als 0!" << endl << "Anzahl der Regentropfen: ";
+			cin >> anzahl;
+		}
+		cout << "Test Koordinate: " << Koordinate(r) << endl;
+		//Für jeden Punkt zufällige x, y Werte
+		float imKreiss = 0;
+		for (int i = 1; i <= anzahl; i++)
+		{
+			x = Koordinate(r);
+			y = Koordinate(r);
+			if (x*x + y*y <= r*r) {
+				imKreiss++;
+			}
+		}
+		pi = 4 * (imKreiss / anzahl);
+
+		//Ende des ersten Teils 
+
+		cout << "Anzahl der erzeugten Tropfen: " << anzahl << endl
+			<< "Anzahl der Tropfen im Kreis: " << imKreiss << endl
+			<< "Pi: " << pi << endl
+			<< endl
+			<< "Wahrer Wert von PI: " << M_PI << endl
+			<< "Unterschied \"PI - Naherungswert\": " << M_PI / pi << endl
+			<< "Prozentualer Fehler: " << (1.0 - pi / M_PI)*100.0 << " %" << endl;
+		break;
 	}
 
 	system("pause");
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
