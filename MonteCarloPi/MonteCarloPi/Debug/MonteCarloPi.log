@@ -1,3 +1,0 @@
-﻿  MonteCarloPi.cpp
-i:\2. inf2p\montecarlopi\montecarlopi\montecarlopi.cpp(99): error C2360: Initialisierung von "imKreis" durch "case"-Bezeichnung übersprungen
-  i:\2. inf2p\montecarlopi\montecarlopi\montecarlopi.cpp(50): note: Siehe Deklaration von "imKreis"
