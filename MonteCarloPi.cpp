@@ -19,7 +19,7 @@ int main()
 	int howmuch;
 	cout << "Wie oft? Einmalig Ausfuehrung [1], bestimmte Anzahl [n] eingeben: ";
 	cin >> howmuch;
-	
+
 	switch (howmuch)
 	{
 	// n Mals als default
@@ -74,7 +74,7 @@ int main()
 				{
 					x = Koordinate(r);
 					y = Koordinate(r);
-					if (x*x + y*y <= r*r) 
+					if (x*x + y*y <= r*r)
 					{
 						imKreis++;
 					}
@@ -83,14 +83,14 @@ int main()
 				float pineu;
 				pineu = 4 * (imKreis / anzahl);
 				pi = (pi + pineu);
-				//Ende des ersten Teils 
+				//Ende des ersten Teils
 				// Zum Testen
-				cout << "Pineu " << i << ": " << pineu << endl 
+				cout << "Pineu " << i << ": " << pineu << endl
 					<< "Anzahl der erzeugten Tropfen: " << anzahl << endl
 					<< "Anzahl der Tropfen im Kreis: " << imKreis << endl
 					<< "Summe Pi: " << pi << endl;
 			}
-			
+
 			//Ausgabe
 			cout << "Pi: " << pi/howmuch << endl
 				<< "Wahrer Wert von PI: " << M_PI << endl
@@ -132,7 +132,7 @@ int main()
 			}
 			pi = 4 * (imKreis / anzahl);
 
-			//Ende des ersten Teils 
+			//Ende des ersten Teils
 
 			cout << "Anzahl der erzeugten Tropfen: " << anzahl << endl
 				<< "Anzahl der Tropfen im Kreis: " << imKreis << endl
